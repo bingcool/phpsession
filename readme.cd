@@ -1,0 +1,1 @@
+phpsession主要是将session和redis结合起来，建立分布式的session缓存系统
