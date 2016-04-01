@@ -47,7 +47,9 @@ class Redisrw {
 		if(!isset($this->handler)) {
 			$this->handler= new Redis;
 		}
+
         $func = self::$option['persistent'] ? 'pconnect' : 'connect';
+
         if(self::$option['timeout'] === false) {
 			$this->handler->$func($host,$port);
 		}else {
@@ -82,6 +84,7 @@ class Redisrw {
             trigger_error("没有找到redis扩展");
             return false;
         }
+
         if(empty($options)) {
             trigger_error("redis的参数为空");
             return false;
@@ -100,6 +103,7 @@ class Redisrw {
 			//根据redis的实例个数,创建null值数组
 			self::$_instance[$key] = null;
 		}
+		
         self::$option =  $options;
         self::$option['expire'] =  isset($options['expire']) ?  $options['expire']  :   30;
         self::$option['timeout'] =  isset($options['timeout']) ?  $options['timeout']  :  0;
