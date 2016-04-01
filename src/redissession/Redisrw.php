@@ -128,10 +128,8 @@ class Redisrw {
 		// 默认返回第一个实例，即master
 		return self::$_validInstance[0];
 	}
-
 	/**
 	*判断是否master/slave,调用不同的master或者slave实例
-	*
 	*/
 	public function is_master($master=true) {
 		if($master) {
